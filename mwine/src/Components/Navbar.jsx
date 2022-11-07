@@ -1,32 +1,39 @@
-import React, {useState} from 'react';
-import { AppBar, Tabs, Tab, Toolbar, Typography, Button } from '@mui/material';
-
+import { AppBar, Button,  Toolbar, Typography} from '@mui/material';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
 
 
 
-
 const Navbar = () => {
-    const [value, setValue] = useState(0);
-    
+   
+    const pages= [
+        {label:"Productos",link:"/"},
+        {label:"Checkout", link:"/checkout"},
+        {label:"Contacto", link:"/contacto"},
+        
+    ]
     return(
 <AppBar sx={{background:"#FFFFFF"}}>
     <Toolbar>
         <img src="/assets/img/logo.jpg" alt="imagen logo" width={'80px'} height={'60px'}/>
         <Typography>SHOP</Typography>
-        <CartWidget/>
-        <Tabs value={value} onChange={(e,value)=> setValue(value)} indicatorColor="secondary">
-            <Tab label="Productos"/>
-            <Tab label="Acerca de"/>
-            <Tab label="Contacto"/>
-        </Tabs>
+        
+      
+        {pages.map((page) => (
+              <Button key={page.label} sx={{marginLeft:"10px"}} variant="contained" style={{background:'#8E1F4C'}}>
+                <Link to={page.link} style={{ color: '#FFF' }}>{page.label}</Link>
+              </Button  >
+            ))}
+        
 
-        <Button sx={{marginLeft:"auto"}} variant="contained">Iniciar sesion</Button>
-        <Button sx={{marginLeft:"10px"}} variant="contained">Registrarse</Button>
+        <Button sx={{marginLeft:"auto"}} variant="contained" style={{background:'#8E1F4C'}}>Iniciar sesion</Button>
+        <Button sx={{marginLeft:"10px"}} variant="contained" style={{background:'#8E1F4C'}}>Registrarse</Button>
+        <Button sx={{marginLeft:"10px"}} variant="contained" style={{background:'#8E1F4C'}}><Link to="/cartwidget" style={{ color: '#FFF' }}><CartWidget/></Link></Button>
     </Toolbar>
 </AppBar>
     );
 };
-export default Navbar;
 
+export default Navbar;
 

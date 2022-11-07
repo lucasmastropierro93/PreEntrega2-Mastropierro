@@ -7,7 +7,7 @@ const CartWidget = () =>{
 
 return(
     <Badge badgeContent={2} color="success">
-    <ShoppingCartIcon color="primary"></ShoppingCartIcon> 
+    <ShoppingCartIcon></ShoppingCartIcon> 
     </Badge>
 );
 }

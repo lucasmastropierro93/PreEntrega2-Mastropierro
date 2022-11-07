@@ -11,7 +11,8 @@ import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { accounting } from 'accounting';
-import { Link } from 'react-router-dom';
+
+
 
 
 const ExpandMore = styled((props) => {
@@ -25,10 +26,8 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function Item ({product: {id, name, category, price, rating, image, description}},products) {
+export default function ItemDetail ({product: {id, name, category, price, rating, image, description}},ItemListContainer) {
   const [expanded, setExpanded] = React.useState(false);
-
-  
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -49,13 +48,13 @@ export default function Item ({product: {id, name, category, price, rating, imag
         title={name}
         subheader="en Stock"
       />
-      <Link to={'/item/' + products.id}>
+      
       <CardMedia
         component="img"
         height="194"
         image={image}
         alt="cel iphone"
-      /></Link>
+      />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {category}

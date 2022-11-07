@@ -1,6 +1,8 @@
+import { SnackbarContent, Box, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ItemList from './ItemList';
+import ItemDetail from './ItemDetail';
+
 
 
 
@@ -8,8 +10,9 @@ import ItemList from './ItemList';
 
 const ItemListContainer = () => {
 
-  const { idcategory } = useParams();
-    const [products,setProducts] =useState([]);
+  const { iditem } = useParams();
+
+    const [product,setProduct] =useState({});
     let productsHC =[
         {
             id: 1,
@@ -88,18 +91,18 @@ const ItemListContainer = () => {
 
   useEffect(()=> {
 
-    const productosPromise = new Promise((res, rej)=>{
+    const productoPromise = new Promise((res, rej)=>{
       setTimeout(() => {
-          res(productsHC);
+          res(productsHC.find((item)=> item.id == iditem));
       }, 2000);
   });
 
 
 
-  productosPromise.then((res)=> setProducts(res));
+  productoPromise.then((res)=> setProduct(res));
 
 
-  },[idcategory]);
+  },[iditem]);
 
   
 
@@ -107,8 +110,21 @@ const ItemListContainer = () => {
 
   return (
     <div>
-      
-      <ItemList products={products}/>
+        {product.id ?(
+            <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={3}>
+        
+        
+          
+          <ItemDetail product={product}/>
+          
+        </Grid>
+      </Box>
+        ):<SnackbarContent message="Cargando..." sx={{width:"100px"}}></SnackbarContent>
+        }
+         
+        
+       
     </div>
   )
 }
