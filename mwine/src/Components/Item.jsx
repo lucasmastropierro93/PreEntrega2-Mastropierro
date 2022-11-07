@@ -49,7 +49,7 @@ export default function Item ({product: {id, name, category, price, rating, imag
         title={name}
         subheader="en Stock"
       />
-      <Link to={'/item/' + products.id}>
+      <Link to={`/item/${id}`}>
       <CardMedia
         component="img"
         height="194"
