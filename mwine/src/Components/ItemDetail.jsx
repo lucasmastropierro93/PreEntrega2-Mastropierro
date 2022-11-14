@@ -1,29 +1,37 @@
 import { Grid, Button } from '@mui/material';
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import { contextoGeneral } from '../Contexts/ContextContainer';
+
+
 import ItemCount from './ItemCount';
 
 
 
 
 
-export default function ItemDetail ({product: {id, name, category, price, rating, image, description}}) {
+export default function ItemDetail ({product}) {
   
+const [goToCart,setGoToCart] = useState(false);
+const {addToCart} = React.useContext(contextoGeneral) 
 
- 
+function onAdd (quantity){
+setGoToCart(true);
+addToCart(product,quantity);
+}
+
 
   return (
    <Grid container spacing={2}>
     <Grid item lg={6}>
-      <img src={image} alt="imagen detalle producto" height={"500px"} width={"600px"}/>
+      <img src={product.image} alt="imagen detalle producto" height={"500px"} width={"600px"}/>
     </Grid>
     <Grid item lg={6}>
-      <h2>{name}</h2>
-      <h3>{category}</h3>
-      <p>{description}</p>
-      <h2>${price}</h2>
-      <ItemCount stock={10} initial={1}/>
-      <Button variant="contained" style={{background:'#8E1F4C'}}><Link to="/cartwidget" style={{ color: '#FFF' }}>Agregar al carrito</Link></Button>
+      <h2>{product.name}</h2>
+      <h3>{product.category}</h3>
+      <p>{product.description}</p>
+      <h2>${product.price}</h2>
+      <ItemCount stock={10} initial={1} onAdd={onAdd}/>
+      <Button variant="contained" style={{background:'#8E1F4C'}}>Agregar al carrito</Button>
     </Grid>
     
       

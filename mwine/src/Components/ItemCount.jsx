@@ -13,7 +13,7 @@ function sumar(){
  
  
 function restar(){
-    if (numero > 0){
+    if (numero > 1){
         setNumero(numero - 1);
     }
 }

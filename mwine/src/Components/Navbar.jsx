@@ -29,7 +29,7 @@ const Navbar = () => {
 
         <Button sx={{marginLeft:"auto"}} variant="contained" style={{background:'#8E1F4C'}}>Iniciar sesion</Button>
         <Button sx={{marginLeft:"10px"}} variant="contained" style={{background:'#8E1F4C'}}>Registrarse</Button>
-        <Button sx={{marginLeft:"10px"}} variant="contained" style={{background:'#8E1F4C'}}><Link to="/cartwidget" style={{ color: '#FFF' }}><CartWidget/></Link></Button>
+        <Button sx={{marginLeft:"10px"}} variant="contained" style={{background:'#8E1F4C'}}><Link to="/cart" style={{ color: '#FFF' }}><CartWidget/></Link></Button>
     </Toolbar>
 </AppBar>
     );
