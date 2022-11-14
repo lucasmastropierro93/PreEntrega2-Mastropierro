@@ -26,6 +26,7 @@ function restar(){
     <h2>{numero}</h2>
     <Button onClick={restar} variant="contained" style={{background:'#8E1F4C'}}>-</Button>
     <h6>stock disponible:{stock}</h6>
+    <Button variant="contained" style={{background:'#8E1F4C'}} onClick={()=> onAdd(numero)}>Agregar al carrito</Button>
     </section>
  
   )

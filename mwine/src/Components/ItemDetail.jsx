@@ -31,7 +31,7 @@ addToCart(product,quantity);
       <p>{product.description}</p>
       <h2>${product.price}</h2>
       <ItemCount stock={10} initial={1} onAdd={onAdd}/>
-      <Button variant="contained" style={{background:'#8E1F4C'}}>Agregar al carrito</Button>
+      
     </Grid>
     
       
