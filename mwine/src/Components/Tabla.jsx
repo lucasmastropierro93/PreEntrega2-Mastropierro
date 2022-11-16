@@ -58,7 +58,7 @@ export default function Tabla() {
               <StyledTableCell align="right">{item.price}</StyledTableCell>
               <StyledTableCell align="right">{item.quantity * item.price}</StyledTableCell>
               <StyledTableCell align="right">
-                <Button style={{background:'#FF0000', color:"white", marginLeft:"3px"}} onClick={()=>restarUno(item.id)}>-</Button>
+                <Button style={{background:'#FF0000', color:"white", marginLeft:"3px"}} onClick={()=>restarUno(item)}>-</Button>
                 <Button style={{background:'#FF0000', color:"white", marginLeft:"3px"}} onClick={()=>deleteItem(item.id)}>x</Button>
                 </StyledTableCell>
             </StyledTableRow>

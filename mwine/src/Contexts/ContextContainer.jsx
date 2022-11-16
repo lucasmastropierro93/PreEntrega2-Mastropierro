@@ -60,7 +60,7 @@ const totalPrice = () => {
 }
 
 const totalProducts = () => {
-  cartList.reduce((acumulador, productoActual) => acumulador + productoActual.quantity, 0);
+    return cartList.reduce((acumulador, productoActual) => acumulador + productoActual.quantity, 0);
 }
   return (
     <contextoGeneral.Provider value={{
