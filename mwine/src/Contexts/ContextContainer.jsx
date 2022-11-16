@@ -9,6 +9,23 @@ const ContextContainer = ({children}) => {
     const [cartList, setCartList] = useState([]);
   
   
+
+
+    const restarUno = (item) => {
+      
+        const carritoActualizado = cartList.map ((prod)=>{
+          if(prod.id === item.id){
+            return {...prod, quantity:prod.quantity -1}
+          }else{
+            return prod
+          }
+          
+           
+          
+        }) 
+        setCartList(carritoActualizado)
+    }
+
     const addToCart = (item, newQuantity) => {  
      if (isInCart(item.id)){
       const carritoActualizado = cartList.map ((prod)=>{
@@ -25,22 +42,36 @@ const ContextContainer = ({children}) => {
      }
 
     }
+    
     const removeList = () => setCartList([]);
     
     const isInCart = (id) => {
       return cartList.find (product => product.id === id) ? true : false ;
     }
-    const deleteItem = (id) => setCartList(cartList.filter(product => product.id !==id));
     
-console.log("carrito", cartList);
+    const deleteItem = (id) => {
+      
+      setCartList(cartList.filter(product => product.id !==id)); 
+     
+      }
 
+const totalPrice = () => {
+  return cartList.reduce((prev, act) => prev + act.quantity * act.price, 0);
+}
+
+const totalProducts = () => {
+  cartList.reduce((acumulador, productoActual) => acumulador + productoActual.quantity, 0);
+}
   return (
     <contextoGeneral.Provider value={{
       cartList, 
       addToCart, 
       removeList, 
       deleteItem, 
-      isInCart
+      isInCart,
+      restarUno,
+      totalPrice,
+      totalProducts
       }}>
 
         {children}

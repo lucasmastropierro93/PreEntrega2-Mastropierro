@@ -37,7 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function Tabla() {
-    const {cartList, deleteItem} = useContext(contextoGeneral)
+    const {cartList, deleteItem, removeList, restarUno} = useContext(contextoGeneral)
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -46,8 +46,8 @@ export default function Tabla() {
             <StyledTableCell>Cantidad</StyledTableCell>
             <StyledTableCell align="right">Articulo</StyledTableCell>
             <StyledTableCell align="right">Precio</StyledTableCell>
-            <StyledTableCell align="right">Total</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="right">Subtotal</StyledTableCell>
+            <StyledTableCell align="right"><Button style={{background:'#FF0000', color:"white"}}onClick={removeList}>BORRAR TODO</Button></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -57,7 +57,10 @@ export default function Tabla() {
               <StyledTableCell align="right">{item.name}</StyledTableCell>
               <StyledTableCell align="right">{item.price}</StyledTableCell>
               <StyledTableCell align="right">{item.quantity * item.price}</StyledTableCell>
-              <StyledTableCell align="right"><Button style={{background:'#FF0000', color:"white"}} onClick={deleteItem}>x</Button></StyledTableCell>
+              <StyledTableCell align="right">
+                <Button style={{background:'#FF0000', color:"white", marginLeft:"3px"}} onClick={()=>restarUno(item.id)}>-</Button>
+                <Button style={{background:'#FF0000', color:"white", marginLeft:"3px"}} onClick={()=>deleteItem(item.id)}>x</Button>
+                </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
